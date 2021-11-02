@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 16:00:23 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/02 16:53:21 by cybattis         ###   ########.fr       */
+/*   Created: 2021/11/02 16:49:44 by cybattis          #+#    #+#             */
+/*   Updated: 2021/11/02 16:55:17 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memset(void *src, int cpy, size_t n)
 {
-	unsigned char	*s2;
+	unsigned char	*s;
+	unsigned char	c;
 
-	s2 = s;
+	s = src;
+	c = cpy;
 	while (n > 0)
 	{
-		*s2 = 0;
-		s2++;
+		*s = c;
+		s++;
 		n--;
 	}
+	return (src);
 }

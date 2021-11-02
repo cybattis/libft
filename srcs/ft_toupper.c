@@ -6,11 +6,11 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 16:09:13 by cybattis          #+#    #+#             */
-/*   Updated: 2021/10/21 16:43:17 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/02 16:19:57 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_tolower(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		c = c - 32;
