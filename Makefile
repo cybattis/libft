@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 15:12:56 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/02 15:12:58 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/03 13:22:13 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	=	libft.a
 SRCS	= 	${wildcard srcs/*.c}
 OBJS	= 	${patsubst srcs/%, objs/%, ${SRCS:.c=.o}}
 
-CC		= 	gcc -std=c89
+CC		= 	gcc -std=c99
 RM		= 	rm -f
 
 CFLAGS	= 	-g -Wall -Wextra -Werror -fsanitize=address -g3 -Iincludes

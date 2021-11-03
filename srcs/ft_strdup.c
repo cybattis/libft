@@ -6,13 +6,11 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 15:24:33 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/02 15:29:13 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/03 11:13:54 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static size_t	ft_strlen(const char *str);
+#include "libft.h"
 
 char	*ft_strdup(const char *src)
 {
@@ -30,14 +28,4 @@ char	*ft_strdup(const char *src)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-static size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }

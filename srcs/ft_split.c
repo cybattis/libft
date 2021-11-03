@@ -6,15 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:21:25 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/02 15:28:27 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/03 11:18:02 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int		word_count(const char *s, char c);
-static int		ft_len(const char *str);
-static size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 char	**ft_split(char const *s, char c)
 {
@@ -69,31 +67,4 @@ static int	word_count(const char *s, char c)
 			words++;
 	}
 	return (words);
-}
-
-static size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	if (size > 0)
-	{
-		while (src[i] && i < size - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (ft_len(src));
-}
-
-static int	ft_len(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
