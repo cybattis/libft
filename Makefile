@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 15:12:56 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/04 15:22:39 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/04 17:40:55 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,14 @@ NAME	=	libft.a
 
 SRCS	= 	$(wildcard *.c)
 OBJS	= 	$(SRCS:.c=.o)
+DEPS	= 	libft.h
 
 CC		= 	gcc -std=c99
 RM		= 	rm -f
 
 CFLAGS	= 	-Wall -Wextra -Werror -I.
 
-%.o: %.c	$(SRCS)
+%.o: %.c	$(SRCS) $(DEPS)
 			$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)

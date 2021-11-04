@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 09:57:40 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/02 15:25:17 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/04 18:18:33 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
+	if (fd < 0)
+		return ;
 	while (s[i])
 	{
 		write(fd, &s[i], 1);

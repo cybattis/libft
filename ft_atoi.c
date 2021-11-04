@@ -6,11 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:40:34 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/04 15:29:44 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:50:35 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include <stdlib.h>
+
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	res;

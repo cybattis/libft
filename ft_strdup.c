@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 15:24:33 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/03 11:13:54 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:53:04 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *src)
 	char	*str;
 
 	i = 0;
-	str = malloc(sizeof(char *) * ft_strlen(src) + 1);
+	str = malloc(sizeof(char) * ft_strlen(src) + 1);
 	if (!str)
 		return (NULL);
 	while (src[i])

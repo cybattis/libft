@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:57:13 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/04 16:39:27 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/04 18:19:06 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	unsigned char	*s;
 	unsigned char	*d;
 
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	s = (unsigned char *)src;
 	d = (unsigned char *)dst;
 	if (dst < src)
