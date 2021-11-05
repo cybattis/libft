@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 19:21:49 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/04 18:16:53 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:26:05 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putendl_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
-	if (fd < 0)
+	if (!s)
 		return ;
 	while (s[i])
 	{
