@@ -3,6 +3,7 @@ tests
 Extra
 *.pdf
 README.md
+*Test*
 
 # Prerequisites
 *.d
