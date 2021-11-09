@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:52:13 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/09 15:49:01 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/09 19:15:50 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ char	*ft_itoa(int n)
 	len = ft_nbrlen(n);
 	s = malloc(sizeof(char) * (len + 1));
 	if (!s)
-	{
-		free(s);
 		return (NULL);
-	}
 	itoa_recu(s, n, i);
 	if (n < 0)
 		s[len - 1] = '-';

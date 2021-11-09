@@ -6,17 +6,17 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 15:12:56 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/09 18:20:52 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/09 19:30:49 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
 SRCS	= 	$(wildcard *.c)
-SRCSB	=	$(wildcard *lst*.c)
 SRCSM	=	$(filter-out $(SRCSB), $(SRCS))
+SRCSB	=	$(wildcard *lst*.c)
 
-OBJSM	=	$(SRCSA:.c=.o)
+OBJSM	=	$(SRCSM:.c=.o)
 OBJSB	=	$(SRCSB:.c=.o)
 
 DEPS	= 	libft.h
@@ -30,17 +30,18 @@ CFLAGS	= 	-Wall -Wextra -Werror
 			$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJSM)
-			ar rcs $(NAME) $(OBJS)
+			ar rcs $(NAME) $(OBJSM)
 			ranlib $(NAME)
 
 all:		$(NAME)
 
-bonus:		$(OBJSA) $(OBJSB) fclean
-			ar -rcs $(NAME) $(OBJSA) $(OBJSB)
+bonus:		$(OBJSM) $(OBJSB)
+			rm -f $(NAME)
+			ar -rcs $(NAME) $(OBJSM) $(OBJSB)
 			ranlib $(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJSM) $(OBJSB)
 
 fclean:		clean
 			$(RM) $(NAME)
