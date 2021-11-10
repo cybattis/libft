@@ -6,11 +6,11 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 19:21:49 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/05 13:26:05 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 15:11:20 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {
@@ -21,8 +21,8 @@ void	ft_putendl_fd(char *s, int fd)
 		return ;
 	while (s[i])
 	{
-		write(fd, &s[i], 1);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	write(fd, "\n", 1);
+	ft_putchar_fd('\n', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:13:20 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/10 12:48:03 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 14:40:00 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*start;
 	t_list	*elem;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
 	new_lst = ft_lstnew(f(lst->content));
 	if (!new_lst)

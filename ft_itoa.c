@@ -6,28 +6,28 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:52:13 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/09 19:15:50 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 14:45:53 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nbrlen(long nb);
+static int	get_nbrlen(long nb);
+static int	get_nbr(char *s, long n, int i);
 static void	reverse_str(char *str);
-static int	itoa_recu(char *s, long n, int i);
 
 char	*ft_itoa(int n)
 {
-	char	*s;
-	int		len;
 	int		i;
+	int		len;
+	char	*s;
 
 	i = 0;
-	len = ft_nbrlen(n);
+	len = get_nbrlen(n);
 	s = malloc(sizeof(char) * (len + 1));
 	if (!s)
 		return (NULL);
-	itoa_recu(s, n, i);
+	get_nbr(s, n, i);
 	if (n < 0)
 		s[len - 1] = '-';
 	s[len] = 0;
@@ -35,12 +35,12 @@ char	*ft_itoa(int n)
 	return (s);
 }
 
-static int	itoa_recu(char *s, long nb, int i)
+static int	get_nbr(char *s, long nb, int i)
 {
 	if (nb < 0)
 		nb = -nb;
 	if (nb >= 10)
-		itoa_recu(s, nb / 10, i + 1);
+		get_nbr(s, nb / 10, i + 1);
 	s[i] = nb % 10 + '0';
 	return (0);
 }
@@ -61,7 +61,7 @@ static void	reverse_str(char *str)
 	}
 }
 
-static int	ft_nbrlen(long nb)
+static int	get_nbrlen(long nb)
 {
 	int	len;
 

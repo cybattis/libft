@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 14:55:15 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/03 11:15:34 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 15:02:23 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 			dst[i] = src[i];
 			i++;
 		}
-		dst[i] = '\0';
+		dst[i] = 0;
 	}
 	return (ft_strlen(src));
 }

@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:16:00 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/09 16:51:47 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 14:39:45 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	del(lst->content);
+	if (del)
+		del(lst->content);
 	free(lst);
 }

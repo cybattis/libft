@@ -6,21 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:00:23 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/02 16:53:21 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 13:58:44 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*s2;
-
-	s2 = s;
-	while (n > 0)
-	{
-		*s2 = 0;
-		s2++;
-		n--;
-	}
+	ft_memset(s, 0, n);
 }
