@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:39:43 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/09 10:41:54 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:55:49 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_list	*ft_lstnew(void *content)
 
 	new = (t_list *)malloc(sizeof(t_list) * 1);
 	if (!new)
-	{
-		free(new);
 		return (NULL);
-	}
 	new->content = content;
 	new->next = NULL;
 	return (new);
