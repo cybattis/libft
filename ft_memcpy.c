@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:32:39 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/10 14:35:02 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:17:41 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*d;
 	size_t			i;
 
-	if (src == NULL)
+	if (!src || !dst)
 		return (NULL);
 	i = 0;
 	s = (unsigned char *)src;
