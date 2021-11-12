@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 15:12:56 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/10 18:40:47 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/12 14:22:36 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ DEPS	= 	libft.h
 CC		= 	gcc -std=c99
 RM		= 	rm -f
 
-CFLAGS	= 	-Wall -Wextra -Werror
+CFLAGS	= 	-Wall -Wextra -Werror -D BUFFER_SIZE=42
 
 %.o:		%.c $(DEPS)
 			$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:16:36 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/04 17:33:16 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/12 17:11:20 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	while (str[i] && i < len)
 	{
 		j = 0;
-		while (str[i + j] == to_find[j] && to_find[j] && i + j < len)
+		while (to_find[j] && str[i + j] == to_find[j] && i + j < len)
 			j++;
 		if (to_find[j] == '\0')
 			return ((char *)&str[i]);

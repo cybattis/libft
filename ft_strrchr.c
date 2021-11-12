@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:09:34 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/10 15:04:36 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/12 17:13:00 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,5 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	if (s[i] == c)
 		pos = (char *)&s[i];
-	if (pos != NULL)
-		return (pos);
-	return (NULL);
+	return (pos);
 }

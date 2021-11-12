@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:21:25 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/10 14:56:30 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/12 17:09:38 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ static void	*get_word(char **strs, const char *s, char c)
 static void	*free_all(char **strs, size_t i)
 {
 	while (i--)
-	{
 		free(strs[i]);
-	}
 	free(strs[i]);
 	free(strs);
 	return (NULL);
