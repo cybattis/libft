@@ -3,8 +3,8 @@ lib_test
 tests
 Extra
 *.pdf
-README.md
 *Test*
+obj
 
 # Prerequisites
 *.d

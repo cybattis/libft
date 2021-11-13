@@ -6,13 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:56:12 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/10 13:56:15 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/13 13:14:44 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *s)
 {
 	int	i;
 	int	res;
@@ -21,15 +21,15 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	res = 0;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	while (ft_isspace(s[i]))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (s[i] == '-' || s[i] == '+')
 	{
-		if (str[i] == '-')
+		if (s[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9' && str[i])
-		res = (res * 10) + str[i++] - '0';
+	while (s[i] >= '0' && s[i] <= '9' && s[i])
+		res = (res * 10) + s[i++] - '0';
 	return (res * sign);
 }
