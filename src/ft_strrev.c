@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 15:24:33 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/13 15:58:36 by cybattis         ###   ########.fr       */
+/*   Created: 2021/11/13 14:52:45 by cybattis          #+#    #+#             */
+/*   Updated: 2021/11/13 15:20:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+void	ft_strrev(char *s)
 {
-	size_t	i;
-	char	*str;
+	int	c;
+	int	i;
+	int	j;
 
 	i = 0;
-	str = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!str)
-		return (NULL);
-	while (src[i])
+	j = ft_strlen(s);
+	while (i < j)
 	{
-		str[i] = src[i];
-		i++;
+		c = s[i];
+		s[i++] = s[j];
+		s[j--] = c;
 	}
-	str[i] = 0;
-	return (str);
 }

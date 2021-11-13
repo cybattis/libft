@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 15:12:56 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/13 14:30:13 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/13 15:31:29 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS	=		$(SRCDIR)/ft_atoi.c				$(SRCDIR)/ft_bzero.c			\
 				$(SRCDIR)/ft_lstsize.c			$(SRCDIR)/ft_isspace.c			\
 				$(SRCDIR)/ft_putchar.c			$(SRCDIR)/ft_puts.c				\
 				$(SRCDIR)/ft_putnbr.c			$(SRCDIR)/ft_putstr.c			\
+				$(SRCDIR)/ft_strrev.c			$(SRCDIR)/ft_strnrev.c			\
 
 OBJS	=		$(SRCS:$(SRCDIR)/%.c=$(BLDDIR)/%.o)
 DEPS	=		$(INCL)/libft.h

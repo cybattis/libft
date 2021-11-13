@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 16:52:13 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/10 14:45:53 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/13 15:42:50 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	get_nbrlen(long nb);
 static int	get_nbr(char *s, long n, int i);
-static void	reverse_str(char *str);
 
 char	*ft_itoa(int n)
 {
@@ -31,7 +30,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		s[len - 1] = '-';
 	s[len] = 0;
-	reverse_str(s);
+	ft_strnrev(s, ft_strlen(s) - 1);
 	return (s);
 }
 
@@ -43,22 +42,6 @@ static int	get_nbr(char *s, long nb, int i)
 		get_nbr(s, nb / 10, i + 1);
 	s[i] = nb % 10 + '0';
 	return (0);
-}
-
-static void	reverse_str(char *str)
-{
-	int	c;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = ft_strlen(str) - 1;
-	while (i < j)
-	{
-		c = str[i];
-		str[i++] = str[j];
-		str[j--] = c;
-	}
 }
 
 static int	get_nbrlen(long nb)

@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/13 14:51:23 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/13 15:58:08 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strdup(const char *src);
+char	*ft_strndup(const char *src, size_t n);
 
 /* String */
 size_t	ft_strlen(const char *str);
@@ -58,6 +59,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_strrev(char *s);
+void	ft_strnrev(char *s, size_t n);
 
 /* I/O */
 void	ft_putchar(char c);
