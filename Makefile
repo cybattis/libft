@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/21 21:19:31 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/21 21:30:44 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME): $(OBJS)
 	@printf "$(_END)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@printf "$(_GREEN)Finish compiling $(NAME)!\n"
+	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
 
 $(OBJ_DIR)%.o: 	src/*/%.c
 	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
