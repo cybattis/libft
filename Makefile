@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/21 18:43:35 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/21 21:19:31 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,52 +35,30 @@ OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS_N:.c=.o))
 # Recipe
 # ****************************************************************************
 
-$(NAME):	$(OBJS)
+$(NAME): $(OBJS)
+	$(HEADER)
 	@printf "$(_END)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@printf "$(_GREEN)Finish compiling $(NAME)!\n"
 
-$(OBJ_DIR)%.o:	src/char/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(_GREEN)█$(_END)"
-
-$(OBJ_DIR)%.o:	src/io/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(_GREEN)█$(_END)"
-
-$(OBJ_DIR)%.o:	src/list/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(_GREEN)█$(_END)"
-
-$(OBJ_DIR)%.o:	src/mem/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(_GREEN)█$(_END)"
-
-$(OBJ_DIR)%.o:	src/nbr/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(_GREEN)█$(_END)"
-
-$(OBJ_DIR)%.o:	src/string/%.c
+$(OBJ_DIR)%.o: 	src/*/%.c
 	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
 header:
+	@printf "\n"
 	@printf "$(_CYAN)\t██╗     ██╗██████╗ ███████╗████████╗$(_END)\n"
 	@printf "$(_CYAN)\t██║     ██║██╔══██╗██╔════╝╚══██╔══╝$(_END)\n"
 	@printf "$(_CYAN)\t██║     ██║██████╔╝█████╗     ██║$(_END)\n"
 	@printf "$(_CYAN)\t██║     ██║██╔══██╗██╔══╝     ██║$(_END)\n"
 	@printf "$(_CYAN)\t███████╗██║██████╔╝██║        ██║$(_END)\n"
 	@printf "$(_CYAN)\t╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(_END)\n"
-	@printf "\n"
 
-all:	header $(NAME)
+f: all
+
+all: header $(NAME)
 
 clean:
 	@printf "$(_YELLOW)Removing object files ...$(_END)\n"
@@ -105,7 +83,7 @@ leak:	re
 check:	all
 		./$(NAME)
 
-.PHONY: all clean fclean re debug leak test libft
+.PHONY: all clean fclean re debug leak test libft header f
 
 # Colors
 # ****************************************************************************
