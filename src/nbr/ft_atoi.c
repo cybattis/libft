@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 13:56:12 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/13 13:14:44 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/20 10:52:24 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_atoi(const char *s)
 			sign *= -1;
 		i++;
 	}
-	while (s[i] >= '0' && s[i] <= '9' && s[i])
+	while (s[i] && s[i] >= '0' && s[i] <= '9')
 		res = (res * 10) + s[i++] - '0';
 	return (res * sign);
 }
