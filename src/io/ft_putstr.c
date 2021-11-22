@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 09:57:40 by cbattist          #+#    #+#             */
-/*   Updated: 2021/11/13 13:23:00 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/22 13:41:23 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putstr(char *s)
 {
-	ft_putstr_fd(s, 1);
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }

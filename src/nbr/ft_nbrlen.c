@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 19:21:49 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/22 13:43:04 by cybattis         ###   ########.fr       */
+/*   Created: 2021/11/22 16:44:39 by cybattis          #+#    #+#             */
+/*   Updated: 2021/11/22 16:45:07 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_puts(char *s)
+int	ft_nbrlen(long nb)
 {
-	ft_putstr(s);
-	ft_putchar('\n');
+	int	i;
+
+	i = 1;
+	if (nb < 0)
+	{
+		i++;
+		nb = -nb;
+	}
+	while (nb >= 10)
+	{
+		i++;
+		nb /= 10;
+	}
+	return (i);
 }
