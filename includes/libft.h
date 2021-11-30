@@ -6,14 +6,17 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/22 16:45:59 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:26:01 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <unistd.h>
 # include <stdlib.h>
+
+# define BUFFER_SIZE 1024
 
 typedef struct s_list
 {
@@ -64,6 +67,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_strrev(char *s);
 void	ft_strnrev(char *s, size_t n);
+char	*get_next_line(int fd);
 
 /* I/O */
 void	ft_putchar(char c);
