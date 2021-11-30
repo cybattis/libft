@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags.c                                         :+:      :+:    :+:   */
+/*   get_flags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:34:37 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 15:21:37 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:02:20 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	ft_field_size(t_printf *p);
-static int	ft_flags(t_printf *p);
 static void	init_flags(t_printf *p);
 
 int	ft_get_flag(t_printf *p)
 {
-	init_flags(p);
-	ft_flags(p);
-	ft_field_size(p);
-	return (0);
-}
-
-static int	ft_flags(t_printf *p)
-{
 	int	f;
 
+	init_flags(p);
 	f = ft_strichr("-# +0", p->str[0]);
 	while (f >= 0)
 	{
@@ -35,6 +27,7 @@ static int	ft_flags(t_printf *p)
 		p->str++;
 		f = ft_strichr("-# +0", p->str[0]);
 	}
+	ft_field_size(p);
 	return (0);
 }
 

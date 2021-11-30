@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:36:46 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 15:21:18 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:59:09 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		ft_uputnbr(unsigned int nb);
 int			ft_nbrlen_base(size_t nbr, size_t base_size);
 void		ft_putnbr_hex(size_t nbr, char *base, size_t size);
 
-/* ft_flags.c */
+/* ft_get_flags.c */
 int			ft_get_flag(t_printf *p);
 int			ft_check_flag(t_printf *p, int cs);
 
