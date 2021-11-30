@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/30 11:19:17 by cybattis         ###   ########.fr        #
+#    Created: 2021/11/02 15:12:56 by cybattis          #+#    #+#              #
+#    Updated: 2021/11/30 10:45:21 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=	libft.a
+NAME 		=	libftprintf.a
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
@@ -22,7 +22,7 @@ CC 			=	gcc
 INCLUDE		=	includes
 
 BASEFLAGS	=	-Wall -Werror -Wextra -MMD
-CFLAGS		=	$(BASEFLAGS) -I $(INCLUDE)
+CFLAGS		=	$(BASEFLAGS) -I $(INCLUDE) -I../../includes
 DEBUG_FLAGS	=	-g3
 
 # Source files
@@ -32,31 +32,21 @@ SRCS	=	$(shell find $(SRC_DIR) -name '*.c')
 SRCS_N	=	$(shell find $(SRC_DIR) -name '*.c' | xargs basename -a)
 OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS_N:.c=.o))
 
+DEPS	=	includes/ft_printf.h
+
 # Recipe
 # ****************************************************************************
 
 $(NAME): $(OBJS)
-	$(HEADER)
 	@printf "$(_END)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
 
-$(OBJ_DIR)%.o: 	src/*/%.c
+$(OBJ_DIR)%.o: 	$(SRC_DIR)%.c $(DEPS)
 	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
-
-header:
-	@printf "\n"
-	@printf "$(_CYAN)\t██╗     ██╗██████╗ ███████╗████████╗$(_END)\n"
-	@printf "$(_CYAN)\t██║     ██║██╔══██╗██╔════╝╚══██╔══╝$(_END)\n"
-	@printf "$(_CYAN)\t██║     ██║██████╔╝█████╗     ██║$(_END)\n"
-	@printf "$(_CYAN)\t██║     ██║██╔══██╗██╔══╝     ██║$(_END)\n"
-	@printf "$(_CYAN)\t███████╗██║██████╔╝██║        ██║$(_END)\n"
-	@printf "$(_CYAN)\t╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(_END)\n"
-
-f: all
 
 all: header $(NAME)
 
@@ -80,12 +70,21 @@ leak:	CFLAGS += $(DEBUG_FLAGS)
 leak:	re
 	@printf "$(_BLUE)Leak check build done$(_END)\n"
 
-check-printf:	all
+check: header
 	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
-	@gcc -Wall -Wextra -o test/a.out test/printf.c libft.a -Iincludes && test/a.out
-	@rm -rf test/a.out
+	@gcc -Wall -Wextra -o test/tester test/main.c libftprintf.a -Iincludes && test/tester
 
-.PHONY: all clean fclean re debug leak test libft header f
+.PHONY: all clean fclean re debug leak check libft header bonus
+
+header:
+	@printf "\n"
+	@printf "$(_CYAN)\t███████╗████████╗    ██████╗ ██████╗ ██╗███╗   ██╗████████╗███████╗$(_END)\n"
+	@printf "$(_CYAN)\t██╔════╝╚══██╔══╝    ██╔══██╗██╔══██╗██║████╗  ██║╚══██╔══╝██╔════╝$(_END)\n"
+	@printf "$(_CYAN)\t█████╗     ██║       ██████╔╝██████╔╝██║██╔██╗ ██║   ██║   █████╗$(_END)\n"
+	@printf "$(_CYAN)\t██╔══╝     ██║       ██╔═══╝ ██╔══██╗██║██║╚██╗██║   ██║   ██╔══╝$(_END)\n"
+	@printf "$(_CYAN)\t██║        ██║       ██║     ██║  ██║██║██║ ╚████║   ██║   ██║$(_END)\n"
+	@printf "$(_CYAN)\t╚═╝        ╚═╝       ╚═╝     ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝$(_END)\n"
+	@printf "\n"
 
 # Colors
 # ****************************************************************************
