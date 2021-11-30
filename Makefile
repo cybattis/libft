@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/30 11:19:17 by cybattis         ###   ########.fr        #
+#    Updated: 2021/11/30 17:38:58 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,6 @@ header:
 	@printf "$(_CYAN)\t███████╗██║██████╔╝██║        ██║$(_END)\n"
 	@printf "$(_CYAN)\t╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(_END)\n"
 
-f: all
-
 all: header $(NAME)
 
 clean:
@@ -85,7 +83,12 @@ check-printf:	all
 	@gcc -Wall -Wextra -o test/a.out test/printf.c libft.a -Iincludes && test/a.out
 	@rm -rf test/a.out
 
-.PHONY: all clean fclean re debug leak test libft header f
+check-gnl:	all
+	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
+	@gcc -Wall -Werror -Wextra -o test/a.out test/gnl.c libft.a -Iincludes && test/a.out
+	@rm -rf test/a.out
+
+.PHONY: all clean fclean re debug leak test libft header check-printf check-gnl
 
 # Colors
 # ****************************************************************************
