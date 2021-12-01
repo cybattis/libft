@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2021/12/01 09:07:05 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:59:22 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*ft_strndup(const char *src, size_t n);
 /* number */
 int		ft_nbrlen(long nb);
 int		ft_atoi(const char *str);
+int		ft_atol(const char *str);
 char	*ft_itoa(int n);
 
 /* String */
