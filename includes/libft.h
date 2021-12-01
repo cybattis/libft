@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 13:45:10 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/12/01 09:07:05 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define LIBFT_H
 
 # include <unistd.h>
+# include <limits.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # define BUFFER_SIZE 1024
 

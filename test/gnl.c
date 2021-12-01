@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:15:23 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 17:37:54 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/12/01 09:26:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 
 int main(void)
 {
-	int		i;
 	int		fd;
 	char	*line;
 
-	i = 1;
 	fd = open("test/files/file", O_RDONLY);
 	if (fd == -1)
 	{

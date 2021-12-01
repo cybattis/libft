@@ -6,12 +6,11 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:12:20 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 17:30:24 by cybattis         ###   ########.fr       */
+/*   Updated: 2021/12/01 08:53:52 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 static char	*read_buffer(int fd, char *line, char *buffer);
 static char	*copy_buffer(char *line, char *buffer, size_t i);

@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/30 17:38:58 by cybattis         ###   ########.fr        #
+#    Updated: 2021/12/01 09:24:08 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,9 @@ fclean:
 
 re:		fclean all
 
+linux:	CFLAGS += -DOPEN_MAX=FOPEN_MAX
+linux:	$(NAME)
+
 debug:	CFLAGS += -fsanitize=address $(DEBUG_FLAGS)
 debug:	re
 	@printf "$(_BLUE)Debug build done$(_END)\n"
@@ -88,7 +91,7 @@ check-gnl:	all
 	@gcc -Wall -Werror -Wextra -o test/a.out test/gnl.c libft.a -Iincludes && test/a.out
 	@rm -rf test/a.out
 
-.PHONY: all clean fclean re debug leak test libft header check-printf check-gnl
+.PHONY: all clean fclean re debug leak test libft header linux check-printf check-gnl
 
 # Colors
 # ****************************************************************************
