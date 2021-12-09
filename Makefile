@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/12/09 16:15:13 by cybattis         ###   ########.fr        #
+#    Updated: 2021/12/09 17:13:50 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,12 @@ SRCS	=	$(shell find $(SRC_DIR) -name '*.c')
 SRCS_N	=	$(shell find $(SRC_DIR) -name '*.c' | xargs basename -a)
 OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS_N:.c=.o))
 
+DEPENDS	=	$(OBJS:.o=.d)
+
 # Recipe
 # ****************************************************************************
 
 $(NAME): $(OBJS)
-	$(HEADER)
 	@printf "$(_END)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
@@ -47,16 +48,7 @@ $(OBJ_DIR)%.o: 	src/*/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-header:
-	@printf "\n"
-	@printf "$(_CYAN)\t██╗     ██╗██████╗ ███████╗████████╗$(_END)\n"
-	@printf "$(_CYAN)\t██║     ██║██╔══██╗██╔════╝╚══██╔══╝$(_END)\n"
-	@printf "$(_CYAN)\t██║     ██║██████╔╝█████╗     ██║$(_END)\n"
-	@printf "$(_CYAN)\t██║     ██║██╔══██╗██╔══╝     ██║$(_END)\n"
-	@printf "$(_CYAN)\t███████╗██║██████╔╝██║        ██║$(_END)\n"
-	@printf "$(_CYAN)\t╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(_END)\n"
-
-all: header $(NAME)
+all: $(NAME)
 
 clean:
 	@printf "$(_YELLOW)Removing object files ...$(_END)\n"
@@ -70,7 +62,7 @@ fclean:
 
 re:		fclean all
 
-linux:	CFLAGS += -DOPEN_MAX=FOPEN_MAX
+linux:	CFLAGS += -D OPEN_MAX=FOPEN_MAX
 linux:	$(NAME)
 
 debug:	CFLAGS += -fsanitize=address $(DEBUG_FLAGS)
@@ -91,7 +83,9 @@ check-gnl:	all
 	@gcc -Wall -Werror -Wextra -o test/a.out test/gnl.c libft.a -Iincludes && test/a.out
 	@rm -rf test/a.out
 
-.PHONY: all clean fclean re debug leak test libft header check-printf check-gnl
+.PHONY: all clean fclean re debug leak test libft check-printf check-gnl
+
+-include $(DEPENDS)
 
 # Colors
 # ****************************************************************************
