@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/11/30 17:38:58 by cybattis         ###   ########.fr        #
+#    Updated: 2021/12/09 16:15:13 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,9 @@ fclean:
 	@rm -fr *.dSYM
 
 re:		fclean all
+
+linux:	CFLAGS += -DOPEN_MAX=FOPEN_MAX
+linux:	$(NAME)
 
 debug:	CFLAGS += -fsanitize=address $(DEBUG_FLAGS)
 debug:	re
