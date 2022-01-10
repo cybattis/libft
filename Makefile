@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2021/12/09 17:13:50 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/10 14:48:56 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,30 +23,36 @@ INCLUDE		=	includes
 
 BASEFLAGS	=	-Wall -Werror -Wextra -MMD
 CFLAGS		=	$(BASEFLAGS) -I $(INCLUDE)
-DEBUG_FLAGS	=	-g3
+DEBUG_FLAGS	=	-g3 -fsanitize=address
 
 # Source files
 # ****************************************************************************
 
-SRCS	=	$(shell find $(SRC_DIR) -name '*.c')
-SRCS_N	=	$(shell find $(SRC_DIR) -name '*.c' | xargs basename -a)
-OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS_N:.c=.o))
+SRCS		=	$(wildcard src/*/*.c)
+OBJS_NAME	=	$(addprefix $(OBJ_DIR), $(notdir $(SRCS)))
+OBJS		=	$(OBJS_NAME:.c=.o)
+OBJS_DEBUG	=	$(OBJS_NAME:.c=_d.o)
 
-DEPENDS	=	$(OBJS:.o=.d)
+DEPENDS		=	$(OBJS:.o=.d)
 
 # Recipe
 # ****************************************************************************
+
+$(OBJ_DIR)%.o: 	src/*/%.c
+	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(_GREEN)█$(_END)"
+
+$(OBJ_DIR)%_d.o: 	src/*/%.c
+	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(_GREEN)█$(_END)"
 
 $(NAME): $(OBJS)
 	@printf "$(_END)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
-
-$(OBJ_DIR)%.o: 	src/*/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(_GREEN)█$(_END)"
 
 all: $(NAME)
 
@@ -57,7 +63,7 @@ clean:
 
 fclean:
 	@printf "$(_RED)Removing object files and program ...$(_END)\n"
-	@rm -rf $(NAME) $(OBJ_DIR)
+	@rm -rf $(NAME) d_$(NAME) $(OBJ_DIR)
 	@rm -fr *.dSYM
 
 re:		fclean all
@@ -65,13 +71,15 @@ re:		fclean all
 linux:	CFLAGS += -D OPEN_MAX=FOPEN_MAX
 linux:	$(NAME)
 
-debug:	CFLAGS += -fsanitize=address $(DEBUG_FLAGS)
-debug:	re
-	@printf "$(_BLUE)Debug build done$(_END)\n"
+linux-debug:	CFLAGS += -D OPEN_MAX=FOPEN_MAX
+linux-debug:	debug
 
-leak:	CFLAGS += $(DEBUG_FLAGS)
-leak:	re
-	@printf "$(_BLUE)Leak check build done$(_END)\n"
+debug:	CFLAGS += $(DEBUG_FLAGS)
+debug:	$(OBJS_DEBUG)
+	@printf "$(_END)\nCompiled source files\n"
+	@ar rcs d_$(NAME) $(OBJS_DEBUG)
+	@ranlib d_$(NAME)
+	@printf "$(_BLUE)Debug build done$(_END)\n"
 
 check-printf:	all
 	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
@@ -83,7 +91,9 @@ check-gnl:	all
 	@gcc -Wall -Werror -Wextra -o test/a.out test/gnl.c libft.a -Iincludes && test/a.out
 	@rm -rf test/a.out
 
-.PHONY: all clean fclean re debug leak test libft check-printf check-gnl
+print-%:	; @echo $* = $($*)
+
+.PHONY: all clean fclean re debug libft linux linux-debug check-printf check-gnl
 
 -include $(DEPENDS)
 
