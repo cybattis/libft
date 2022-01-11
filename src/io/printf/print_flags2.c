@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:17:34 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/11 13:35:29 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/11 14:31:12 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_print_str_field(t_printf *p, int len, int fd)
 		p->flags[FIELD] -= max;
 }
 
-int	ft_print_x_fld(t_printf *p, U_INT len, char *alt, U_INT nb, int fd)
+int	ft_print_hex_field(t_printf *p, U_INT len, char *alt, U_INT nb, int fd)
 {
 	if (p->flags[ALT] == 1 && nb > 0)
 	{

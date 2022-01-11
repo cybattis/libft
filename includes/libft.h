@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/11 14:17:37 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/11 14:27:43 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 
 # ifdef __linux__
-# define OPEN_MAX FOPEN_MAX
+#  define OPEN_MAX FOPEN_MAX
 # endif
 
 # define BUFFER_SIZE 2048
