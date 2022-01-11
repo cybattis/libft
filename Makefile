@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/11 19:40:15 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/11 19:55:11 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ SHELL 		=	/bin/bash
 CC 			=	gcc
 INCLUDE		=	includes
 
-MAKEFLAGS	=	-MMD
-CFLAGS		=	-Wall -Wextra -O2 $(MAKEFLAGS) $(HDFLAGS)
+CFLAGS		=	-Wall -Wextra -O2 -MMD $(HDFLAGS)
 DBFLAGS		=	$(CFLAGS) -g3 -fsanitize=address
 HDFLAGS		=	-I $(INCLUDE)
 
