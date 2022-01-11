@@ -3,6 +3,7 @@ lib_test
 Extra
 *.pdf
 obj
+objd
 
 # Prerequisites
 *.d

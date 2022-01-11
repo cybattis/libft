@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/11 14:10:55 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/11 19:13:00 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SHELL 		=	/bin/bash
 CC 			=	gcc
 INCLUDE		=	includes
 
-CFLAGS		=	-Wall -Werror -Wextra -O2 -MMD $(HDFLAGS)
+MAKEFLAGS	=	-MMD
+CFLAGS		=	-Wall -Wextra -O2 $(MAKEFLAGS) $(HDFLAGS)
 DBFLAGS		=	$(CFLAGS) -g3 -fsanitize=address
 HDFLAGS		=	-I $(INCLUDE)
 
@@ -66,8 +67,9 @@ OBJSDIR		=	obj/
 OBJS		=	$(addprefix $(OBJSDIR), $(notdir $(SRCS:.c=.o)))
 
 OBJSDIRD	=	objd/
-OBJSD		=	$(addprefix $(OBJSDIRD), $(notdir $(SRCS:.c=d.o)))
+OBJSD		=	$(addprefix $(OBJSDIRD), $(notdir $(SRCS:.c=.o)))
 
+DEPENDSD	=	$(OBJSD:.o=.d)
 DEPENDS		=	$(OBJS:.o=.d)
 
 # Recipe
@@ -84,6 +86,11 @@ $(OBJSDIR)%.o: 	src/*/*/%.c
 	@printf "$(_GREEN)█$(_END)"
 
 $(OBJSDIRD)%.o: 	src/*/%.c
+	@mkdir -p $(OBJSDIRD)
+	@$(CC) $(DBFLAGS) -c $< -o $@
+	@printf "$(_GREEN)█$(_END)"
+
+$(OBJSDIRD)%.o: 	src/*/*/%.c
 	@mkdir -p $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
@@ -112,29 +119,26 @@ fclean:	clean
 
 re:		fclean all
 
-linux:	CFLAGS += -D OPEN_MAX=FOPEN_MAX
-linux:	$(NAME)
-
-linux-debug:	CFLAGS += -D OPEN_MAX=FOPEN_MAX
-linux-debug:	debug
-
 debug:	$(NAMED)
 
-check-printf:	all
+check-printf:	debug
 	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
-	@gcc -Wall -Wextra -o test/a.out test/printf.c libft.a -Iincludes && test/a.out
-	@rm -rf test/a.out
+	@gcc -Wall -Wextra $(DBFLAGS) -o test/dprintf test/dprintf.c libft_d.a -Iincludes && test/dprintf
+	@rm -rf test/dprintf
+	@gcc -Wall -Wextra $(DBFLAGS) -o test/printf test/printf.c libft_d.a -Iincludes && test/printf
+	@rm -rf test/printf
 
-check-gnl:	all
+check-gnl:	debug
 	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
-	@gcc -Wall -Werror -Wextra -o test/a.out test/gnl.c libft.a -Iincludes && test/a.out
-	@rm -rf test/a.out
+	@gcc -Wall -Werror -Wextra $(DBFLAGS) -o test/gnl test/gnl.c libft_d.a -Iincludes && test/gnl
+	@rm -rf test/gnl
 
 print-%:	; @echo $* = $($*)
 
 .PHONY: all clean fclean re debug libft linux linux-debug check-printf check-gnl
 
 -include $(DEPENDS)
+-include $(DEPENDSD)
 
 # Colors
 # ****************************************************************************
