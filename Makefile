@@ -6,13 +6,12 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/10 14:48:56 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/11 14:10:55 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=	libft.a
-SRC_DIR		=	src/
-OBJ_DIR		=	obj/
+NAMED 		=	libft_d.a
 
 # Config
 # ****************************************************************************
@@ -21,50 +20,95 @@ SHELL 		=	/bin/bash
 CC 			=	gcc
 INCLUDE		=	includes
 
-BASEFLAGS	=	-Wall -Werror -Wextra -MMD
-CFLAGS		=	$(BASEFLAGS) -I $(INCLUDE)
-DEBUG_FLAGS	=	-g3 -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra -O2 -MMD $(HDFLAGS)
+DBFLAGS		=	$(CFLAGS) -g3 -fsanitize=address
+HDFLAGS		=	-I $(INCLUDE)
 
 # Source files
 # ****************************************************************************
 
-SRCS		=	$(wildcard src/*/*.c)
-OBJS_NAME	=	$(addprefix $(OBJ_DIR), $(notdir $(SRCS)))
-OBJS		=	$(OBJS_NAME:.c=.o)
-OBJS_DEBUG	=	$(OBJS_NAME:.c=_d.o)
+SRCDIR		=	src
+
+#LinkLists
+LINKLISTDIR	=	$(SRCDIR)/data_structures/link_list/
+LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstsize.c		\
+				ft_lstlast.c ft_lstmap.c ft_lstnew.c
+
+#IO
+IODIR		=	$(SRCDIR)/io/
+IO			=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_get_next_line.c				\
+				ft_putchar.c ft_puts.c ft_putnbr.c ft_putstr.c
+
+#Printf
+PRINTFDIR	=	$(SRCDIR)/io/printf/
+PRINTF		=	ft_printf.c conv_func.c conv_func2.c get_flags.c print_flags.c print_flags2.c utils.c
+
+#Memory
+MEMORYDIR	=	$(SRCDIR)/memory/
+MEMORY		=	ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memset.c
+
+#C strings
+CSTRINGSDIR	=	$(SRCDIR)/strings/cstrings/
+CSTRINGS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c			\
+ 				ft_split.c ft_strchr.c ft_strichr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c			\
+				ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c		\
+				ft_substr.c ft_tolower.c ft_toupper.c ft_strndup.c ft_strnrev.c ft_strrev.c ft_atol.c			\
+				ft_nbrlen.c
+
+SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))			\
+				$(addprefix $(IODIR), $(IO)) 						\
+				$(addprefix $(PRINTFDIR), $(PRINTF)) 				\
+				$(addprefix $(MEMORYDIR), $(MEMORY)) 				\
+				$(addprefix $(CSTRINGSDIR), $(CSTRINGS)) 			\
+				$(addprefix $(STANDARDDIR), $(STANDARD)) 			\
+
+OBJSDIR		=	obj/
+OBJS		=	$(addprefix $(OBJSDIR), $(notdir $(SRCS:.c=.o)))
+
+OBJSDIRD	=	objd/
+OBJSD		=	$(addprefix $(OBJSDIRD), $(notdir $(SRCS:.c=d.o)))
 
 DEPENDS		=	$(OBJS:.o=.d)
 
 # Recipe
 # ****************************************************************************
 
-$(OBJ_DIR)%.o: 	src/*/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
+$(OBJSDIR)%.o: 	src/*/%.c
+	@mkdir -p $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJ_DIR)%_d.o: 	src/*/%.c
-	@if [ ! -d $(OBJ_DIR) ];then mkdir -p $(OBJ_DIR); fi
+$(OBJSDIR)%.o: 	src/*/*/%.c
+	@mkdir -p $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(_GREEN)█$(_END)"
+
+$(OBJSDIRD)%.o: 	src/*/%.c
+	@mkdir -p $(OBJSDIRD)
+	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
 $(NAME): $(OBJS)
 	@printf "$(_END)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
-	@ranlib $(NAME)
 	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
+
+$(NAMED):	$(OBJSD)
+	@printf "$(_END)\nCompiled debug source files\n"
+	@rm -f $(NAMED)
+	@ar -rcs $(NAMED) $(OBJSD)
+	@printf "$(_GREEN)Finish compiling in debug mode$(NAMED)!$(_END)\n"
 
 all: $(NAME)
 
 clean:
 	@printf "$(_YELLOW)Removing object files ...$(_END)\n"
-	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJSDIR) $(OBJSDIRD)
 	@rm -fr *.dSYM
 
-fclean:
-	@printf "$(_RED)Removing object files and program ...$(_END)\n"
-	@rm -rf $(NAME) d_$(NAME) $(OBJ_DIR)
-	@rm -fr *.dSYM
+fclean:	clean
+	@printf "$(_RED)Removing Executable ...$(_END)\n"
+	@rm -rf $(NAME) $(NAMED)
 
 re:		fclean all
 
@@ -74,12 +118,7 @@ linux:	$(NAME)
 linux-debug:	CFLAGS += -D OPEN_MAX=FOPEN_MAX
 linux-debug:	debug
 
-debug:	CFLAGS += $(DEBUG_FLAGS)
-debug:	$(OBJS_DEBUG)
-	@printf "$(_END)\nCompiled source files\n"
-	@ar rcs d_$(NAME) $(OBJS_DEBUG)
-	@ranlib d_$(NAME)
-	@printf "$(_BLUE)Debug build done$(_END)\n"
+debug:	$(NAMED)
 
 check-printf:	all
 	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"

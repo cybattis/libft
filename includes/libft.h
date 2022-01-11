@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2021/12/09 17:17:19 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/11 14:17:37 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE 1024
+# ifdef __linux__
+# define OPEN_MAX FOPEN_MAX
+# endif
+
+# define BUFFER_SIZE 2048
 
 typedef struct s_list
 {
@@ -70,7 +74,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_strrev(char *s);
 void	ft_strnrev(char *s, size_t n);
-char	*get_next_line(int fd);
+char	*ft_get_next_line(int fd);
 
 /* I/O */
 void	ft_putchar(char c);
@@ -81,7 +85,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-int		ft_printf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 
 /* Single chained list */
 t_list	*ft_lstnew(void *content);

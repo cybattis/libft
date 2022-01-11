@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_flags.c                                   :+:      :+:    :+:   */
+/*   print_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:15:54 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 15:21:34 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:28:29 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_negfield(t_printf *p)
+int	ft_print_negfield(t_printf *p, int fd)
 {
 	if (p->flags[FIELD] > 0 && p->flags[MINUS] == 1)
 	{
 		while (p->flags[FIELD] > 0)
 		{
-			ft_putchar(' ');
+			ft_putchar_fd(' ', fd);
 			p->flags[FIELD]--;
 			p->len++;
 		}
@@ -26,31 +26,31 @@ int	ft_print_negfield(t_printf *p)
 	return (0);
 }
 
-void	ft_print_precision(t_printf *p, int len, int nb)
+void	ft_print_precision(t_printf *p, int len, int nb, int fd)
 {
 	if (nb < 0)
 		len--;
 	while (len < p->flags[PRECI])
 	{
-		ft_putchar('0');
+		ft_putchar_fd('0', fd);
 		p->flags[FIELD]--;
 		len++;
 		p->len++;
 	}
 }
 
-void	ft_print_uprecision(t_printf *p, unsigned int len)
+void	ft_print_uprecision(t_printf *p, unsigned int len, int fd)
 {
 	while (len < (unsigned int)p->flags[PRECI])
 	{
-		ft_putchar('0');
+		ft_putchar_fd('0', fd);
 		len++;
 		p->len++;
 		p->flags[FIELD]--;
 	}
 }
 
-int	ft_print_str_precision(t_printf *p, char *s, int len)
+int	ft_print_str_precision(t_printf *p, char *s, int len, int fd)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ int	ft_print_str_precision(t_printf *p, char *s, int len)
 			p->len -= len - p->flags[PRECI];
 		while (s[i] && p->flags[PRECI] > 0)
 		{
-			ft_putchar(s[i++]);
+			ft_putchar_fd(s[i++], fd);
 			p->flags[PRECI]--;
 		}
 		return (1);

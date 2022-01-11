@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:12:20 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 17:30:24 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:43:15 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*read_buffer(int fd, char *line, char *buffer);
 static char	*copy_buffer(char *line, char *buffer, size_t i);
 static char	*check_buffer(int fd, char *buffer, char *line);
 
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	buffer[OPEN_MAX][BUFFER_SIZE + 1];
 	char		*line;

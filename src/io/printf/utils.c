@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:15:41 by cybattis          #+#    #+#             */
-/*   Updated: 2021/11/30 15:20:29 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:26:28 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ int	ft_max(int n1, int n2)
 	return (n2);
 }
 
-void	print_char(t_printf *p)
+void	print_char(t_printf *p, int fd)
 {
 	p->len++;
-	ft_putchar(p->str[0]);
+	ft_putchar_fd(p->str[0], fd);
 }
 
-void	ft_uputnbr(unsigned int nb)
+void	ft_uputnbr(unsigned int nb, int fd)
 {
 	char	c;
 
 	if (nb >= 10)
 		ft_putnbr(nb / 10);
 	c = nb % 10 + '0';
-	ft_putchar(c);
+	ft_putchar_fd(c, fd);
 }
 
 int	ft_nbrlen_base(size_t nbr, size_t base_size)
@@ -48,13 +48,13 @@ int	ft_nbrlen_base(size_t nbr, size_t base_size)
 	return (i);
 }
 
-void	ft_putnbr_hex(size_t nb, char *base, size_t size)
+void	ft_putnbr_hex(size_t nb, char *base, size_t size, int fd)
 {
 	if (nb >= size)
 	{
-		ft_putnbr_hex(nb / size, base, size);
-		ft_putchar(base[nb % size]);
+		ft_putnbr_hex(nb / size, base, size, fd);
+		ft_putchar_fd(base[nb % size], fd);
 	}
 	else
-		ft_putchar(base[nb % size]);
+		ft_putchar_fd(base[nb % size], fd);
 }
