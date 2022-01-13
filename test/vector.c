@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 17:15:23 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/13 20:41:28 by cybattis         ###   ########.fr       */
+/*   Created: 2022/01/13 20:31:54 by cybattis          #+#    #+#             */
+/*   Updated: 2022/01/13 21:00:56 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
+#include <limits.h>
 #include "libft.h"
 
 int main(void)
 {
-	int		fd;
-	char	*line;
+	t_vec2	v;
 
-	fd = open("test/files/file", O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Error opening file\n");
-		return (1);
-	}
-	while ((line = ft_get_next_line(fd)) != NULL)
-	{
-		ft_printf("%s", line);
-		free(line);
-	}
-	close(fd);
+	v = vec2(42, 69);
+	ft_printf("vec2() ");
+	(v.x == 42 && v.y == 69) ? ft_printf("OK\n") : ft_printf("FAIL\n");
+	v = vec2_zero();
+	ft_printf("vec2_zero() ");
+	(v.x == 0 && v.y == 0) ? ft_printf("OK\n") : ft_printf("FAIL\n");
+	v = vec2_set(42);
+	ft_printf("vec2_set() ");
+	(v.x == 42 && v.y == 42) ? ft_printf("OK\n") : ft_printf("FAIL\n");
 	return (0);
 }

@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
+/*   vec2_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 17:15:23 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/13 20:41:28 by cybattis         ###   ########.fr       */
+/*   Created: 2022/01/13 19:58:54 by cybattis          #+#    #+#             */
+/*   Updated: 2022/01/13 22:04:12 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include "libft.h"
+#include "math.h"
 
-int main(void)
+t_vec2	*vec2_multv2(t_vec2 *self, t_vec2 v2)
 {
-	int		fd;
-	char	*line;
+	self->x = self->x * v2.x;
+	self->y = self->y * v2.y;
+	return (self);
+}
 
-	fd = open("test/files/file", O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Error opening file\n");
-		return (1);
-	}
-	while ((line = ft_get_next_line(fd)) != NULL)
-	{
-		ft_printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	return (0);
+t_vec2	*vec2_multi(t_vec2 *self, long n)
+{
+	self->x = self->x * n;
+	self->y = self->y * n;
+	return (self);
+}
+
+t_vec2	*vec2_multf(t_vec2 *self, double n)
+{
+	self->x = self->x * n;
+	self->y = self->y * n;
+	return (self);
 }

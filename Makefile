@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/11 19:55:11 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/13 20:45:02 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ LINKLISTDIR	=	$(SRCDIR)/data_structures/link_list/
 LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstsize.c		\
 				ft_lstlast.c ft_lstmap.c ft_lstnew.c
 
+VECTORDIR	=	$(SRCDIR)/data_structures/vector/
+VECTOR		=	vec2.c vec2_2.c vec2_3.c
+
 #IO
 IODIR		=	$(SRCDIR)/io/
 IO			=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_get_next_line.c				\
@@ -56,6 +59,7 @@ CSTRINGS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_ispr
 				ft_nbrlen.c ft_isspace.c
 
 SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))			\
+				$(addprefix $(VECTORDIR), $(VECTOR))				\
 				$(addprefix $(IODIR), $(IO)) 						\
 				$(addprefix $(PRINTFDIR), $(PRINTF)) 				\
 				$(addprefix $(MEMORYDIR), $(MEMORY)) 				\
@@ -120,17 +124,8 @@ re:		fclean all
 
 debug:	$(NAMED)
 
-check-printf:	debug
-	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
-	@gcc -Wall -Wextra $(DBFLAGS) -o test/dprintf test/dprintf.c libft_d.a -Iincludes && test/dprintf
-	@rm -rf test/dprintf
-	@gcc -Wall -Wextra $(DBFLAGS) -o test/printf test/printf.c libft_d.a -Iincludes && test/printf
-	@rm -rf test/printf
-
-check-gnl:	debug
-	@printf "\t\t$(_YELLOW)================= [ TEST ] =================$(_END)\n\n"
-	@gcc -Wall -Werror -Wextra $(DBFLAGS) -o test/gnl test/gnl.c libft_d.a -Iincludes && test/gnl
-	@rm -rf test/gnl
+test:	debug
+		./test/test.sh
 
 print-%:	; @echo $* = $($*)
 

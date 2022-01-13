@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/13 19:30:42 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/13 22:20:24 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,56 @@ typedef struct s_vec2
 	int	y;
 }	t_vec2;
 
+typedef struct s_vec3
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_vec3;
+
+typedef struct s_vec4
+{
+	int	x;
+	int	y;
+	int	z;
+	int	w;
+}	t_vec4;
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/* vec2.c */
+t_vec2	vec2(double x, double y);
+t_vec2	vec2_zero(void);
+t_vec2	vec2_set(double value);
+t_vec2	*vec2_add(t_vec2 *self, t_vec2 v2);
+t_vec2	*vec2_multv2(t_vec2 *self, t_vec2 v2);
+t_vec2	*vec2_multi(t_vec2 *self, long n);
+t_vec2	*vec2_multf(t_vec2 *self, double n);
+t_vec2	*vec2_divv2(t_vec2 *self, t_vec2 v2);
+t_vec2	*vec2_divi(t_vec2 *self, long n);
+t_vec2	*vec2_divf(t_vec2 *self, double n);
+double	vec2_mag(t_vec2 vec2);
+t_vec2	*vec2_normalize(t_vec2 *v);
+t_vec2	vec2_normalized(t_vec2 v);
+
+/* vec3.c */
+t_vec3	vec3(double x, double y, double z);
+t_vec3	vec3_zero(void);
+t_vec3	vec3_set(double value);
+t_vec2	*vec3_add(t_vec3 *self, t_vec3 v3);
+t_vec3	*vec3_multv2(t_vec3 *self, t_vec3 v3);
+t_vec3	*vec3_multi(t_vec3 *self, long n);
+t_vec3	*vec3_multf(t_vec3 *self, double n);
+t_vec3	*vec3_divv2(t_vec3 *self, t_vec3 v3);
+t_vec3	*vec3_divi(t_vec3 *self, long n);
+t_vec3	*vec3_divf(t_vec3 *self, double n);
+double	vec3_mag(t_vec3 v);
+t_vec3	*vec3_normalize(t_vec3 *v);
+t_vec3	vec3_normalized(t_vec3 v);
 
 /* Check */
 int		ft_isalpha(int c);
