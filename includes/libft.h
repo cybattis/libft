@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/11 19:15:38 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:30:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 # endif
 
 # define BUFFER_SIZE 2048
+
+typedef struct s_vec2
+{
+	int	x;
+	int	y;
+}	t_vec2;
 
 typedef struct s_list
 {
