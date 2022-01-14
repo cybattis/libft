@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/13 22:20:24 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:54:11 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+/* math.c */
+double	ft_lerp(double a, double b, double f);
+
 /* vec2.c */
 t_vec2	vec2(double x, double y);
 t_vec2	vec2_zero(void);
@@ -69,16 +72,37 @@ t_vec2	vec2_normalized(t_vec2 v);
 t_vec3	vec3(double x, double y, double z);
 t_vec3	vec3_zero(void);
 t_vec3	vec3_set(double value);
-t_vec2	*vec3_add(t_vec3 *self, t_vec3 v3);
+t_vec3	*vec3_add(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_multv2(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_multi(t_vec3 *self, long n);
 t_vec3	*vec3_multf(t_vec3 *self, double n);
 t_vec3	*vec3_divv2(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_divi(t_vec3 *self, long n);
 t_vec3	*vec3_divf(t_vec3 *self, double n);
-double	vec3_mag(t_vec3 v);
 t_vec3	*vec3_normalize(t_vec3 *v);
 t_vec3	vec3_normalized(t_vec3 v);
+t_vec3	*vec3_clamp_max(t_vec3 *v, double x, double y, double z);
+t_vec3	*vec3_clamp_min(t_vec3 *v, double x, double y, double z);
+t_vec3	vec3_lerpf(t_vec3 base, t_vec3 high, double value);
+double	vec3_mag(t_vec3 v);
+
+/* vec4.c */
+t_vec4	vec4(double x, double y, double z, double w);
+t_vec4	vec4_zero(void);
+t_vec4	vec4_set(double value);
+t_vec4	*vec4_add(t_vec4 *self, t_vec4 v3);
+t_vec4	*vec4_multv3(t_vec4 *self, t_vec4 v3);
+t_vec4	*vec4_multi(t_vec4 *self, long n);
+t_vec4	*vec4_multf(t_vec4 *self, double n);
+t_vec4	*vec4_divv3(t_vec4 *self, t_vec4 v3);
+t_vec4	*vec4_divi(t_vec4 *self, long n);
+t_vec4	*vec4_divf(t_vec4 *self, double n);
+t_vec4	*vec4_normalize(t_vec4 *v);
+t_vec4	vec4_normalized(t_vec4 v);
+t_vec4	*vec4_clamp_max(t_vec4 *v, t_vec4 clamp);
+t_vec4	*vec4_clamp_min(t_vec4 *v, t_vec4 clamp);
+t_vec4	vec4_lerpf(t_vec4 base, t_vec4 high, double value);
+double	vec4_mag(t_vec4 v);
 
 /* Check */
 int		ft_isalpha(int c);

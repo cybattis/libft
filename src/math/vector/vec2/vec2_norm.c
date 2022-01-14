@@ -1,49 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2.c                                             :+:      :+:    :+:   */
+/*   vec2_norm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 19:50:01 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/13 22:04:14 by cybattis         ###   ########.fr       */
+/*   Created: 2022/01/14 15:26:34 by cybattis          #+#    #+#             */
+/*   Updated: 2022/01/14 16:23:23 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <math.h>
 
-t_vec2	vec2(double x, double y)
+t_vec2	*vec2_normalize(t_vec2 *self)
 {
-	t_vec2	v;
-
-	v.x = x;
-	v.y = y;
-	return (v);
+	return (vec2_divf(self, vec2_mag(*self)));
 }
 
-t_vec2	vec2_zero(void)
+t_vec2	vec2_normalized(t_vec2 v)
 {
-	t_vec2	v;
+	double	mag;
 
-	v.x = 0;
-	v.y = 0;
-	return (v);
-}
-
-t_vec2	vec2_set(double value)
-{
-	t_vec2	v;
-
-	v.x = value;
-	v.y = value;
-	return (v);
-}
-
-t_vec2	*vec2_add(t_vec2 *self, t_vec2 v2)
-{
-	self->x += v2.x;
-	self->y += v2.y;
-	return (self);
+	mag = vec2_mag(v);
+	return (vec2(v.x / mag, v.y / mag));
 }
 
 double	vec2_mag(t_vec2 v)

@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/13 20:45:02 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/14 16:22:03 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,23 @@ SRCDIR		=	src
 LINKLISTDIR	=	$(SRCDIR)/data_structures/link_list/
 LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstsize.c		\
 				ft_lstlast.c ft_lstmap.c ft_lstnew.c
+#Math
+MATHDIR		=	$(SRCDIR)/math/
+MATH		=	math.c
 
-VECTORDIR	=	$(SRCDIR)/data_structures/vector/
-VECTOR		=	vec2.c vec2_2.c vec2_3.c
+#Vector
+VECTORDIR	=	$(SRCDIR)/math/vector/
+VEC2		=	vec2_init.c vec2_add.c vec2_mult.c vec2_div.c vec2_norm.c
+VEC3		=	vec3_init.c vec3_add.c vec3_mult.c vec3_div.c vec3_norm.c vec3_lerpf.c
+VEC4		=	vec4_init.c vec4_add.c vec4_mult.c vec4_div.c vec4_norm.c vec4_lerpf.c
+
+VECTOR		=	$(addprefix vec2/, $(VEC2))		\
+				$(addprefix vec3/, $(VEC3))		\
+				$(addprefix vec4/, $(VEC4))
+
+#Matrix
+MATRIXDIR	=	$(SRCDIR)/math/matrix/
+MATRIX		=
 
 #IO
 IODIR		=	$(SRCDIR)/io/
@@ -58,13 +72,14 @@ CSTRINGS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_ispr
 				ft_substr.c ft_tolower.c ft_toupper.c ft_strndup.c ft_strnrev.c ft_strrev.c ft_atol.c			\
 				ft_nbrlen.c ft_isspace.c
 
-SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))			\
-				$(addprefix $(VECTORDIR), $(VECTOR))				\
-				$(addprefix $(IODIR), $(IO)) 						\
-				$(addprefix $(PRINTFDIR), $(PRINTF)) 				\
-				$(addprefix $(MEMORYDIR), $(MEMORY)) 				\
-				$(addprefix $(CSTRINGSDIR), $(CSTRINGS)) 			\
-				$(addprefix $(STANDARDDIR), $(STANDARD)) 			\
+SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))	\
+				$(addprefix $(VECTORDIR), $(VECTOR))		\
+				$(addprefix $(MATHDIR), $(MATH))			\
+				$(addprefix $(IODIR), $(IO)) 				\
+				$(addprefix $(PRINTFDIR), $(PRINTF)) 		\
+				$(addprefix $(MEMORYDIR), $(MEMORY)) 		\
+				$(addprefix $(CSTRINGSDIR), $(CSTRINGS)) 	\
+				$(addprefix $(STANDARDDIR), $(STANDARD))
 
 OBJSDIR		=	obj/
 OBJS		=	$(addprefix $(OBJSDIR), $(notdir $(SRCS:.c=.o)))
@@ -78,16 +93,27 @@ DEPENDS		=	$(OBJS:.o=.d)
 # Recipe
 # ****************************************************************************
 
-$(OBJSDIR)%.o: 	src/*/%.c
+$(OBJSDIR)%.o: 		src/*/%.c
 	@mkdir -p $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIR)%.o: 	src/*/*/%.c
+$(OBJSDIR)%.o: 		src/*/*/%.c
 	@mkdir -p $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
+$(OBJSDIR)%.o: 	src/*/*/*/%.c
+	@mkdir -p $(OBJSDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(_GREEN)█$(_END)"
+
+$(NAME):	$(OBJS)
+	@printf "$(_END)\nCompiled source files\n"
+	@ar rcs $(NAME) $(OBJS)
+	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
+
+# Debug
 $(OBJSDIRD)%.o: 	src/*/%.c
 	@mkdir -p $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
@@ -98,10 +124,10 @@ $(OBJSDIRD)%.o: 	src/*/*/%.c
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(NAME): $(OBJS)
-	@printf "$(_END)\nCompiled source files\n"
-	@ar rcs $(NAME) $(OBJS)
-	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
+$(OBJSDIRD)%.o: 	src/*/*/*/%.c
+	@mkdir -p $(OBJSDIRD)
+	@$(CC) $(DBFLAGS) -c $< -o $@
+	@printf "$(_GREEN)█$(_END)"
 
 $(NAMED):	$(OBJSD)
 	@printf "$(_END)\nCompiled debug source files\n"
@@ -109,27 +135,30 @@ $(NAMED):	$(OBJSD)
 	@ar -rcs $(NAMED) $(OBJSD)
 	@printf "$(_GREEN)Finish compiling in debug mode$(NAMED)!$(_END)\n"
 
-all: $(NAME)
+#Action
+# ****************************************************************************
+
+all: 		$(NAME)
 
 clean:
 	@printf "$(_YELLOW)Removing object files ...$(_END)\n"
 	@rm -rf $(OBJSDIR) $(OBJSDIRD)
 	@rm -fr *.dSYM
 
-fclean:	clean
+fclean:		clean
 	@printf "$(_RED)Removing Executable ...$(_END)\n"
 	@rm -rf $(NAME) $(NAMED)
 
-re:		fclean all
+re:			fclean all
 
-debug:	$(NAMED)
+debug:		$(NAMED)
 
-test:	debug
-		./test/test.sh
+test:		debug
+			./test/test.sh
 
 print-%:	; @echo $* = $($*)
 
-.PHONY: all clean fclean re debug libft linux linux-debug check-printf check-gnl
+.PHONY: all clean fclean re debug libft test
 
 -include $(DEPENDS)
 -include $(DEPENDSD)
