@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:54:11 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:51:30 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,23 @@
 
 typedef struct s_vec2
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vec2;
 
 typedef struct s_vec3
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_vec3;
 
 typedef struct s_vec4
 {
-	int	x;
-	int	y;
-	int	z;
-	int	w;
+	double	x;
+	double	y;
+	double	z;
+	double	w;
 }	t_vec4;
 
 typedef struct s_list
