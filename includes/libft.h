@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 17:51:30 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/16 21:25:41 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);
+void	print_matrix(int fd, t_vec3 **matrix, int size_x, int size_y);
 
 /* Single chained list */
 t_list	*ft_lstnew(void *content);
