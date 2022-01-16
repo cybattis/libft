@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:21:25 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/16 22:36:46 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:41:24 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	*get_word(char **strs, const char *s, char c)
 		{
 			strs[i] = malloc(sizeof(char) * (s - start + 1));
 			if (!strs[i])
-				return (free_all(strs, i));
+				return (ft_free_all(strs, i));
 			ft_strlcpy(strs[i], start, (s - start) + 1);
 			i++;
 		}
