@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/14 16:22:03 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/16 21:37:29 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ MATRIX		=
 #IO
 IODIR		=	$(SRCDIR)/io/
 IO			=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_get_next_line.c				\
-				ft_putchar.c ft_puts.c ft_putnbr.c ft_putstr.c
+				ft_putchar.c ft_puts.c ft_putnbr.c ft_putstr.c ft_print_matrix.c
 
 #Printf
 PRINTFDIR	=	$(SRCDIR)/io/printf/
