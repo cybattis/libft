@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/16 22:36:10 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:38:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strdup(const char *src);
 char	*ft_strndup(const char *src, size_t n);
 	/* utils.c */
-void	*free_all(char **strs, size_t i);
+void	*ft_free_all(char **strs, size_t i);
 
 /* number */
 int		ft_nbrlen(long nb);
