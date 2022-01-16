@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/16 22:37:32 by cybattis         ###   ########.fr        #
+#    Updated: 2022/01/16 22:43:20 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ PRINTF		=	ft_printf.c conv_func.c conv_func2.c get_flags.c print_flags.c print_f
 #Memory
 MEMORYDIR	=	$(SRCDIR)/memory/
 MEMORY		=	ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memccpy.c ft_memmove.c			\
-				ft_memset.c utils.c
+				ft_memset.c mem_utils.c
 
 #C strings
 CSTRINGSDIR	=	$(SRCDIR)/strings/cstrings/
