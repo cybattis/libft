@@ -6,14 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:21:25 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/11 12:50:15 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:36:46 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static size_t	word_count(const char *s, char c);
-static void		*free_all(char **strs, size_t i);
 static void		*get_word(char **strs, const char *s, char c);
 
 char	**ft_split(char const *s, char c)
@@ -54,15 +53,6 @@ static void	*get_word(char **strs, const char *s, char c)
 	}
 	strs[i] = 0;
 	return (0);
-}
-
-static void	*free_all(char **strs, size_t i)
-{
-	while (i)
-		free(strs[i--]);
-	free(strs[i]);
-	free(strs);
-	return (NULL);
 }
 
 static size_t	word_count(const char *s, char c)
