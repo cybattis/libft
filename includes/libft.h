@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/16 22:38:42 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:03:16 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-/* math.c */
+/* math */
 double	ft_lerp(double a, double b, double f);
 
-/* vec2.c */
+/* vec2 */
 t_vec2	vec2(double x, double y);
 t_vec2	vec2_zero(void);
 t_vec2	vec2_set(double value);
@@ -68,7 +68,7 @@ double	vec2_mag(t_vec2 vec2);
 t_vec2	*vec2_normalize(t_vec2 *v);
 t_vec2	vec2_normalized(t_vec2 v);
 
-/* vec3.c */
+/* vec3 */
 t_vec3	vec3(double x, double y, double z);
 t_vec3	vec3_zero(void);
 t_vec3	vec3_set(double value);
@@ -86,7 +86,7 @@ t_vec3	*vec3_clamp_min(t_vec3 *v, double x, double y, double z);
 t_vec3	vec3_lerpf(t_vec3 base, t_vec3 high, double value);
 double	vec3_mag(t_vec3 v);
 
-/* vec4.c */
+/* vec4 */
 t_vec4	vec4(double x, double y, double z, double w);
 t_vec4	vec4_zero(void);
 t_vec4	vec4_set(double value);
@@ -103,6 +103,8 @@ t_vec4	*vec4_clamp_max(t_vec4 *v, t_vec4 clamp);
 t_vec4	*vec4_clamp_min(t_vec4 *v, t_vec4 clamp);
 t_vec4	vec4_lerpf(t_vec4 base, t_vec4 high, double value);
 double	vec4_mag(t_vec4 v);
+
+/* matrix */
 
 /* Check */
 int		ft_isalpha(int c);
@@ -125,7 +127,8 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strdup(const char *src);
 char	*ft_strndup(const char *src, size_t n);
-	/* utils.c */
+
+	/* utils */
 void	*ft_free_all(char **strs, size_t i);
 
 /* number */
