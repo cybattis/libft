@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/19 14:03:16 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/01/28 12:07:17 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ t_vec3	vec3(double x, double y, double z);
 t_vec3	vec3_zero(void);
 t_vec3	vec3_set(double value);
 t_vec3	*vec3_add(t_vec3 *self, t_vec3 v3);
-t_vec3	*vec3_multv2(t_vec3 *self, t_vec3 v3);
+t_vec3	*vec3_multv3(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_multi(t_vec3 *self, long n);
 t_vec3	*vec3_multf(t_vec3 *self, double n);
-t_vec3	*vec3_divv2(t_vec3 *self, t_vec3 v3);
+t_vec3	*vec3_divv3(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_divi(t_vec3 *self, long n);
 t_vec3	*vec3_divf(t_vec3 *self, double n);
 t_vec3	*vec3_normalize(t_vec3 *v);
@@ -90,11 +90,11 @@ double	vec3_mag(t_vec3 v);
 t_vec4	vec4(double x, double y, double z, double w);
 t_vec4	vec4_zero(void);
 t_vec4	vec4_set(double value);
-t_vec4	*vec4_add(t_vec4 *self, t_vec4 v3);
-t_vec4	*vec4_multv3(t_vec4 *self, t_vec4 v3);
+t_vec4	*vec4_add(t_vec4 *self, t_vec4 v4);
+t_vec4	*vec4_multv4(t_vec4 *self, t_vec4 v4);
 t_vec4	*vec4_multi(t_vec4 *self, long n);
 t_vec4	*vec4_multf(t_vec4 *self, double n);
-t_vec4	*vec4_divv3(t_vec4 *self, t_vec4 v3);
+t_vec4	*vec4_divv4(t_vec4 *self, t_vec4 v4);
 t_vec4	*vec4_divi(t_vec4 *self, long n);
 t_vec4	*vec4_divf(t_vec4 *self, double n);
 t_vec4	*vec4_normalize(t_vec4 *v);
