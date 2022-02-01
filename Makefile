@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/01/19 14:02:21 by cybattis         ###   ########.fr        #
+#    Updated: 2022/02/01 12:58:30 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ VECTOR		=	$(addprefix vec2/, $(VEC2))		\
 
 #Matrix
 MATRIXDIR	=	$(SRCDIR)/math/matrix/
-MATRIX		=	matrix_mult.c
+MATRIX		=	
 
 #IO
 IODIR		=	$(SRCDIR)/io/
