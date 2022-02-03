@@ -15,58 +15,58 @@
 # define BUFFER_SIZE 2048
 
 /* math */
-double	ft_lerp(double a, double b, double f);
+float	ft_lerp(float a, float b, float f);
 
 /* vec2 */
-t_vec2	vec2(double x, double y);
+t_vec2	vec2(float x, float y);
 t_vec2	vec2_zero(void);
-t_vec2	vec2_set(double value);
+t_vec2	vec2_set(float value);
 t_vec2	*vec2_add(t_vec2 *self, t_vec2 v2);
 t_vec2	*vec2_multv2(t_vec2 *self, t_vec2 v2);
 t_vec2	*vec2_multi(t_vec2 *self, long n);
-t_vec2	*vec2_multf(t_vec2 *self, double n);
+t_vec2	*vec2_multf(t_vec2 *self, float n);
 t_vec2	*vec2_divv2(t_vec2 *self, t_vec2 v2);
 t_vec2	*vec2_divi(t_vec2 *self, long n);
-t_vec2	*vec2_divf(t_vec2 *self, double n);
-double	vec2_mag(t_vec2 vec2);
+t_vec2	*vec2_divf(t_vec2 *self, float n);
+float	vec2_mag(t_vec2 vec2);
 t_vec2	*vec2_normalize(t_vec2 *v);
 t_vec2	vec2_normalized(t_vec2 v);
 
 /* vec3 */
-t_vec3	vec3(double x, double y, double z);
+t_vec3	vec3(float x, float y, float z);
 t_vec3	vec3_zero(void);
-t_vec3	vec3_set(double value);
+t_vec3	vec3_set(float value);
 t_vec3	*vec3_add(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_multv2(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_multi(t_vec3 *self, long n);
-t_vec3	*vec3_multf(t_vec3 *self, double n);
+t_vec3	*vec3_multf(t_vec3 *self, float n);
 t_vec3	*vec3_divv2(t_vec3 *self, t_vec3 v3);
 t_vec3	*vec3_divi(t_vec3 *self, long n);
-t_vec3	*vec3_divf(t_vec3 *self, double n);
+t_vec3	*vec3_divf(t_vec3 *self, float n);
 t_vec3	*vec3_normalize(t_vec3 *v);
 t_vec3	vec3_normalized(t_vec3 v);
-t_vec3	*vec3_clamp_max(t_vec3 *v, double x, double y, double z);
-t_vec3	*vec3_clamp_min(t_vec3 *v, double x, double y, double z);
-t_vec3	vec3_lerpf(t_vec3 base, t_vec3 high, double value);
-double	vec3_mag(t_vec3 v);
+t_vec3	*vec3_clamp_max(t_vec3 *v, float x, float y, float z);
+t_vec3	*vec3_clamp_min(t_vec3 *v, float x, float y, float z);
+t_vec3	vec3_lerpf(t_vec3 base, t_vec3 high, float value);
+float	vec3_mag(t_vec3 v);
 
 /* vec4 */
-t_vec4	vec4(double x, double y, double z, double w);
+t_vec4	vec4(float x, float y, float z, float w);
 t_vec4	vec4_zero(void);
-t_vec4	vec4_set(double value);
+t_vec4	vec4_set(float value);
 t_vec4	*vec4_add(t_vec4 *self, t_vec4 v3);
 t_vec4	*vec4_multv3(t_vec4 *self, t_vec4 v3);
 t_vec4	*vec4_multi(t_vec4 *self, long n);
-t_vec4	*vec4_multf(t_vec4 *self, double n);
+t_vec4	*vec4_multf(t_vec4 *self, float n);
 t_vec4	*vec4_divv3(t_vec4 *self, t_vec4 v3);
 t_vec4	*vec4_divi(t_vec4 *self, long n);
-t_vec4	*vec4_divf(t_vec4 *self, double n);
+t_vec4	*vec4_divf(t_vec4 *self, float n);
 t_vec4	*vec4_normalize(t_vec4 *v);
 t_vec4	vec4_normalized(t_vec4 v);
 t_vec4	*vec4_clamp_max(t_vec4 *v, t_vec4 clamp);
 t_vec4	*vec4_clamp_min(t_vec4 *v, t_vec4 clamp);
-t_vec4	vec4_lerpf(t_vec4 base, t_vec4 high, double value);
-double	vec4_mag(t_vec4 v);
+t_vec4	vec4_lerpf(t_vec4 base, t_vec4 high, float value);
+float	vec4_mag(t_vec4 v);
 
 /* Check */
 int	ft_isalpha(int c);

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3.c                                             :+:      :+:    :+:   */
+/*   vec3_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:58:07 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:24:41 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 
-t_vec3	vec3(double x, double y, double z)
+t_vec3	vec3(float x, float y, float z)
 {
 	t_vec3	v;
 
@@ -33,7 +33,7 @@ t_vec3	vec3_zero(void)
 	return (v);
 }
 
-t_vec3	vec3_set(double value)
+t_vec3	vec3_set(float value)
 {
 	t_vec3	v;
 

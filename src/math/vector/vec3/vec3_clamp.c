@@ -6,13 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:23:46 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:23:54 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_vec3	*vec3_clamp_max(t_vec3 *v, double x, double y, double z)
+t_vec3	*vec3_clamp_max(t_vec3 *v, float x, float y, float z)
 {
 	if (v->x > x)
 		v->x = x;
@@ -23,7 +23,7 @@ t_vec3	*vec3_clamp_max(t_vec3 *v, double x, double y, double z)
 	return (v);
 }
 
-t_vec3	*vec3_clamp_min(t_vec3 *v, double x, double y, double z)
+t_vec3	*vec3_clamp_min(t_vec3 *v, float x, float y, float z)
 {
 	if (v->x < x)
 		v->x = x;

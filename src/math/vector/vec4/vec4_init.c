@@ -6,14 +6,14 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:58:07 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:42:32 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 
-t_vec4	vec4(double x, double y, double z, double w)
+t_vec4	vec4(float x, float y, float z, float w)
 {
 	t_vec4	v;
 
@@ -35,7 +35,7 @@ t_vec4	vec4_zero(void)
 	return (v);
 }
 
-t_vec4	vec4_set(double value)
+t_vec4	vec4_set(float value)
 {
 	t_vec4	v;
 

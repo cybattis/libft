@@ -25,3 +25,6 @@ printf "\t\t$YELLOW================= [ VEC2 ] =================$END\n\n"
 gcc $CFLAGS -o test/vector test/vector.c -Iincludes libft_d.a -lm && test/vector
 rm -rf test/vector
 
+printf "\t\t$YELLOW================= [ MATRIX ] =================$END\n\n"
+gcc $CFLAGS -o test/matrix test/matrix.c -Iincludes libft_d.a -lm && test/matrix
+rm -rf test/matrix

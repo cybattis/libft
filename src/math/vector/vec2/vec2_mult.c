@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_2.c                                           :+:      :+:    :+:   */
+/*   vec2_mult.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:58:54 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 14:32:14 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vec2	*vec2_multi(t_vec2 *self, long n)
 	return (self);
 }
 
-t_vec2	*vec2_multf(t_vec2 *self, double n)
+t_vec2	*vec2_multf(t_vec2 *self, float n)
 {
 	self->x = self->x * n;
 	self->y = self->y * n;

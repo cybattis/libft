@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:58:54 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:46:25 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vec4	*vec4_multi(t_vec4 *self, long n)
 	return (self);
 }
 
-t_vec4	*vec4_multf(t_vec4 *self, double n)
+t_vec4	*vec4_multf(t_vec4 *self, float n)
 {
 	self->x *= n;
 	self->y *= n;

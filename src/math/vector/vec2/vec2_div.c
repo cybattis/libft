@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:14:05 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:28:43 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vec2	*vec2_divi(t_vec2 *self, long n)
 	return (self);
 }
 
-t_vec2	*vec2_divf(t_vec2 *self, double n)
+t_vec2	*vec2_divf(t_vec2 *self, float n)
 {
 	self->x /= n;
 	self->y /= n;

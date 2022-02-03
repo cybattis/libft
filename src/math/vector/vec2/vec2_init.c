@@ -6,13 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:50:01 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:28:20 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_vec2	vec2(double x, double y)
+t_vec2	vec2(float x, float y)
 {
 	t_vec2	v;
 
@@ -30,7 +30,7 @@ t_vec2	vec2_zero(void)
 	return (v);
 }
 
-t_vec2	vec2_set(double value)
+t_vec2	vec2_set(float value)
 {
 	t_vec2	v;
 

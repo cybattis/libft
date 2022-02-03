@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:23:19 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 16:22:47 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ t_vec3	*vec3_normalize(t_vec3 *self)
 
 t_vec3	vec3_normalized(t_vec3 v)
 {
-	double	mag;
+	float	mag;
 
 	mag = vec3_mag(v);
 	return (vec3(v.x / mag, v.y / mag, v.z / mag));
 }
 
-double	vec3_mag(t_vec3 v)
+float	vec3_mag(t_vec3 v)
 {
 	return (fabs(sqrt(v.x * v.x + v.y * v.y + v.z * v.z)));
 }

@@ -6,14 +6,14 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 14:48:57 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 15:45:40 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 
-t_vec4	vec4_lerpf(t_vec4 base, t_vec4 high, double value)
+t_vec4	vec4_lerpf(t_vec4 base, t_vec4 high, float value)
 {
 	t_vec4	v;
 

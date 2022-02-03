@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 15:26:34 by cybattis          #+#    #+#             */
-/*   Updated: 2022/01/14 16:23:23 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:28:42 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ t_vec2	*vec2_normalize(t_vec2 *self)
 
 t_vec2	vec2_normalized(t_vec2 v)
 {
-	double	mag;
+	float	mag;
 
 	mag = vec2_mag(v);
 	return (vec2(v.x / mag, v.y / mag));
 }
 
-double	vec2_mag(t_vec2 v)
+float	vec2_mag(t_vec2 v)
 {
 	return (fabs(sqrt(v.x * v.x + v.y * v.y)));
 }
