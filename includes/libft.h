@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/04 12:29:09 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/04 20:21:48 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_vec4		vec4_lerpf(t_vec4 base, t_vec4 high, float value);
 float		vec4_mag(t_vec4 v);
 
 /* matrix */
-void		matrix_mult44(t_matrix44f m1, t_matrix44f m2, t_matrix *out);
+void		matrix_mult44(float m1[][4], float m2[][4], t_matrix *out);
 t_vec3		matrix_mult44v3(const t_vec3 *v, t_matrix44f m);
 t_vec4		matrix_mult44v4(const t_vec4 *v, t_matrix44f m);
 
