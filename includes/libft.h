@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/05 23:46:47 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/05 23:49:46 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # endif
 
 # define BUFFER_SIZE 2048
-
-typedef float (*t_matrix44f)[4];
 
 typedef struct s_vec2
 {
@@ -113,8 +111,8 @@ float		vec4_mag(t_vec4 v);
 
 /* matrix */
 void		matrix_mult44(float m1[][4], float m2[][4], t_matrix *out);
-t_vec3		matrix_mult44v3(const t_vec3 *v, t_matrix44f m);
-t_vec4		matrix_mult44v4(const t_vec4 *v, t_matrix44f m);
+t_vec3		matrix_mult44v3(const t_vec3 *v, float m[][4]);
+t_vec4		matrix_mult44v4(const t_vec4 *v, float m[][4]);
 
 /* Check */
 int			ft_isalpha(int c);
