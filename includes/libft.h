@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/04 12:29:09 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/05 23:34:10 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void		*ft_free_all(char **strs, size_t i);
 int			ft_nbrlen(long nb);
 int			ft_atoi(const char *str);
 long		ft_atol(const char *s);
+int			ft_atoi_base(const char *str, const char *base);
 char		*ft_itoa(int n);
 
 /* String */
