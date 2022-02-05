@@ -6,13 +6,13 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:25:59 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/04 12:34:39 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/04 23:18:34 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	matrix_mult44(t_matrix44f m1, t_matrix44f m2, t_matrix *out)
+void	matrix_mult44(float m1[][4], float m2[][4], t_matrix *out)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ void	matrix_mult44(t_matrix44f m1, t_matrix44f m2, t_matrix *out)
 	}
 }
 
-t_vec3	matrix_mult44v3(const t_vec3 *v, t_matrix44f m)
+t_vec3	matrix_mult44v3(const t_vec3 *v, float m[][4])
 {
 	float	w;
 	t_vec3	out;
@@ -49,7 +49,7 @@ t_vec3	matrix_mult44v3(const t_vec3 *v, t_matrix44f m)
 	return (out);
 }
 
-t_vec4	matrix_mult44v4(const t_vec4 *v, t_matrix44f m)
+t_vec4	matrix_mult44v4(const t_vec4 *v, float m[][4])
 {
 	t_vec4	out;
 
