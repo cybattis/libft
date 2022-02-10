@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:25:59 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/04 23:18:34 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:19:35 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,19 @@ void	matrix_mult44(float m1[][4], float m2[][4], t_matrix *out)
 	}
 }
 
-t_vec3	matrix_mult44v3(const t_vec3 *v, float m[][4])
+t_vec3	matrix_mult44v3(const t_vec3 *v, t_matrix *matrix)
 {
 	float	w;
 	t_vec3	out;
 
-	out.x = v->x * m[0][0] + v->y * m[0][1] + v->z * m[0][2] + m[0][3];
-	out.y = v->x * m[1][0] + v->y * m[1][1] + v->z * m[1][2] + m[1][3];
-	out.z = v->x * m[2][0] + v->y * m[2][1] + v->z * m[2][2] + m[2][3];
-	w = v->x * m[3][0] + v->y * m[3][1] + v->z * m[3][2] + m[3][3];
+	out.x = v->x * matrix->m[0][0] + v->y * matrix->m[0][1]
+		+ v->z * matrix->m[0][2] + matrix->m[0][3];
+	out.y = v->x * matrix->m[1][0] + v->y * matrix->m[1][1]
+		+ v->z * matrix->m[1][2] + matrix->m[1][3];
+	out.z = v->x * matrix->m[2][0] + v->y * matrix->m[2][1]
+		+ v->z * matrix->m[2][2] + matrix->m[2][3];
+	w = v->x * matrix->m[3][0] + v->y * matrix->m[3][1]
+		+ v->z * matrix->m[3][2] + matrix->m[3][3];
 	if (w != 1)
 	{
 		out.x /= w;
@@ -49,13 +53,17 @@ t_vec3	matrix_mult44v3(const t_vec3 *v, float m[][4])
 	return (out);
 }
 
-t_vec4	matrix_mult44v4(const t_vec4 *v, float m[][4])
+t_vec4	matrix_mult44v4(const t_vec4 *v, t_matrix *matrix)
 {
 	t_vec4	out;
 
-	out.x = v->x * m[0][0] + v->y * m[0][1] + v->z * m[0][2] + v->w * m[0][3];
-	out.y = v->x * m[1][0] + v->y * m[1][1] + v->z * m[1][2] + v->w * m[1][3];
-	out.z = v->x * m[2][0] + v->y * m[2][1] + v->z * m[2][2] + v->w * m[2][3];
-	out.w = v->x * m[3][0] + v->y * m[3][1] + v->z * m[3][2] + v->w * m[3][3];
+	out.x = v->x * matrix->m[0][0] + v->y * matrix->m[0][1]
+		+ v->z * matrix->m[0][2] + v->w * matrix->m[0][3];
+	out.y = v->x * matrix->m[1][0] + v->y * matrix->m[1][1]
+		+ v->z * matrix->m[1][2] + v->w * matrix->m[1][3];
+	out.z = v->x * matrix->m[2][0] + v->y * matrix->m[2][1]
+		+ v->z * matrix->m[2][2] + v->w * matrix->m[2][3];
+	out.w = v->x * matrix->m[3][0] + v->y * matrix->m[3][1]
+		+ v->z * matrix->m[3][2] + v->w * matrix->m[3][3];
 	return (out);
 }
