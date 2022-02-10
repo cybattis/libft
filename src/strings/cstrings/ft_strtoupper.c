@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 16:36:23 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/10 17:48:28 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/10 19:51:06 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_str_toupper(char *str)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
 			str[i] = str[i] - 32;
-		str++;
 		i++;
 	}
 	return (str);
