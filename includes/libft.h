@@ -6,7 +6,7 @@
 /*   By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:47:32 by cybattis          #+#    #+#             */
-/*   Updated: 2022/02/09 17:19:41 by cybattis         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:51:29 by cybattis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		ft_strrev(char *s);
 void		ft_strnrev(char *s, size_t n);
 char		*ft_get_next_line(int fd);
+char		*ft_str_tolower(char *str);
+char		*ft_str_toupper(char *str);
 
 /* I/O */
 void		ft_putchar(char c);
