@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/02/05 23:27:15 by cybattis         ###   ########.fr        #
+#    Updated: 2022/02/10 17:48:07 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ CSTRINGS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_ispr
  				ft_split.c ft_strchr.c ft_strichr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c			\
 				ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c		\
 				ft_substr.c ft_tolower.c ft_toupper.c ft_strndup.c ft_strnrev.c ft_strrev.c ft_atol.c			\
-				ft_nbrlen.c ft_isspace.c ft_atoi_base.c
+				ft_nbrlen.c ft_isspace.c ft_atoi_base.c ft_strtoupper.c ft_strtolower.c
 
 SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))	\
 				$(addprefix $(VECTORDIR), $(VECTOR))		\
