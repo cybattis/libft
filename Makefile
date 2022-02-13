@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/02/10 17:48:07 by cybattis         ###   ########.fr        #
+#    Updated: 2022/02/13 19:59:56 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,12 @@ NAMED 		=	libft_d.a
 
 SHELL 		=	/bin/bash
 CC 			=	gcc
-INCLUDE		=	includes
 
-CFLAGS		=	-Wall -Wextra -O2 -MMD $(HDFLAGS)
+CFLAGS		=	-Wall -Wextra -O2 $(INCLUDE)
 DBFLAGS		=	$(CFLAGS) -g3 -fsanitize=address
-HDFLAGS		=	-I $(INCLUDE)
+
+INCLUDE		=	-I includes
+DEPS		=	Makefile includes/libft.h
 
 # Source files
 # ****************************************************************************
@@ -31,8 +32,8 @@ SRCDIR		=	src
 
 #LinkLists
 LINKLISTDIR	=	$(SRCDIR)/data_structures/link_list/
-LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstsize.c		\
-				ft_lstlast.c ft_lstmap.c ft_lstnew.c
+LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c 	\
+				ft_lstsize.c ft_lstlast.c ft_lstmap.c ft_lstnew.c
 #Math
 MATHDIR		=	$(SRCDIR)/math/
 MATH		=	math.c
@@ -83,57 +84,47 @@ SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))	\
 				$(addprefix $(CSTRINGSDIR), $(CSTRINGS)) 	\
 				$(addprefix $(STANDARDDIR), $(STANDARD))
 
-OBJSDIR		=	obj/
-OBJS		=	$(addprefix $(OBJSDIR), $(notdir $(SRCS:.c=.o)))
+OBJSDIR		=	obj
+OBJS		=	$(addprefix $(OBJSDIR)/, $(notdir $(SRCS:.c=.o)))
 
-OBJSDIRD	=	objd/
-OBJSD		=	$(addprefix $(OBJSDIRD), $(notdir $(SRCS:.c=.o)))
-
-DEPENDSD	=	$(OBJSD:.o=.d)
-DEPENDS		=	$(OBJS:.o=.d)
+OBJSDIRD	=	objd
+OBJSD		=	$(addprefix $(OBJSDIRD)/, $(notdir $(SRCS:.c=.o)))
 
 # Recipe
 # ****************************************************************************
 
-$(OBJSDIR)%.o: 		src/*/%.c
-	@mkdir -p $(OBJSDIR)
+$(OBJSDIR)/%.o:	src/*/%.c $(DEPS) | $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIR)%.o: 		src/*/*/%.c
-	@mkdir -p $(OBJSDIR)
+$(OBJSDIR)/%.o:	src/*/*/%.c $(DEPS) | $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIR)%.o: 	src/*/*/*/%.c
-	@mkdir -p $(OBJSDIR)
+$(OBJSDIR)/%.o:	src/*/*/*/%.c $(DEPS) | $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
 $(NAME):	$(OBJS)
-	@printf "$(_END)\nCompiled source files\n"
+	@printf "$(_BLUE)\nCompiled source files\n"
 	@ar rcs $(NAME) $(OBJS)
 	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
 
 # Debug
-$(OBJSDIRD)%.o: 	src/*/%.c
-	@mkdir -p $(OBJSDIRD)
+$(OBJSDIRD)/%.o:	src/*/%.c $(DEPS) | $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIRD)%.o: 	src/*/*/%.c
-	@mkdir -p $(OBJSDIRD)
+$(OBJSDIRD)/%.o:	src/*/*/%.c $(DEPS) | $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIRD)%.o: 	src/*/*/*/%.c
-	@mkdir -p $(OBJSDIRD)
+$(OBJSDIRD)/%.o:	src/*/*/*/%.c $(DEPS) | $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
 $(NAMED):	$(OBJSD)
-	@printf "$(_END)\nCompiled debug source files\n"
-	@rm -f $(NAMED)
+	@printf "$(_BLUE)\nCompiled debug source files\n"
 	@ar -rcs $(NAMED) $(OBJSD)
 	@printf "$(_GREEN)Finish compiling in debug mode$(NAMED)!$(_END)\n"
 
@@ -158,12 +149,15 @@ debug:		$(NAMED)
 test:		debug
 			./test/test.sh
 
-print-%:	; @echo $* = $($*)
+$(OBJSDIR):
+	@mkdir -p $(OBJSDIR)
 
 .PHONY: all clean fclean re debug libft test
 
--include $(DEPENDS)
--include $(DEPENDSD)
+# Misc
+# =====================
+
+print-%:	; @echo $* = $($*)
 
 # Colors
 # ****************************************************************************
