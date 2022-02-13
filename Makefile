@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/02/13 19:59:56 by cybattis         ###   ########.fr        #
+#    Updated: 2022/02/13 21:08:02 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,6 +151,9 @@ test:		debug
 
 $(OBJSDIR):
 	@mkdir -p $(OBJSDIR)
+
+$(OBJSDIRD):
+	@mkdir -p $(OBJSDIRD)
 
 .PHONY: all clean fclean re debug libft test
 
