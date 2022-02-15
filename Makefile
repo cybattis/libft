@@ -6,7 +6,7 @@
 #    By: cybattis <cybattis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/21 16:51:12 by cybattis          #+#    #+#              #
-#    Updated: 2022/02/13 21:08:02 by cybattis         ###   ########.fr        #
+#    Updated: 2022/02/15 17:14:10 by cybattis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS		=	-Wall -Wextra -O2 $(INCLUDE)
 DBFLAGS		=	$(CFLAGS) -g3 -fsanitize=address
 
 INCLUDE		=	-I includes
-DEPS		=	Makefile includes/libft.h
+DEPS		=	includes/libft.h
 
 # Source files
 # ****************************************************************************
@@ -32,7 +32,7 @@ SRCDIR		=	src
 
 #LinkLists
 LINKLISTDIR	=	$(SRCDIR)/data_structures/link_list/
-LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c 	\
+LINKLIST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c		\
 				ft_lstsize.c ft_lstlast.c ft_lstmap.c ft_lstnew.c
 #Math
 MATHDIR		=	$(SRCDIR)/math/
@@ -54,24 +54,25 @@ MATRIX		=	matrix_mult.c
 
 #IO
 IODIR		=	$(SRCDIR)/io/
-IO			=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_get_next_line.c				\
+IO			=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_get_next_line.c	\
 				ft_putchar.c ft_puts.c ft_putnbr.c ft_putstr.c ft_print_matrix.c
 
 #Printf
 PRINTFDIR	=	$(SRCDIR)/io/printf/
-PRINTF		=	ft_printf.c conv_func.c conv_func2.c get_flags.c print_flags.c print_flags2.c utils.c
+PRINTF		=	ft_printf.c conv_func.c conv_func2.c get_flags.c print_flags.c print_flags2.c		\
+				utils.c
 
 #Memory
 MEMORYDIR	=	$(SRCDIR)/memory/
-MEMORY		=	ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memccpy.c ft_memmove.c			\
-				ft_memset.c mem_utils.c
+MEMORY		=	ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memccpy.c				\
+				ft_memmove.c ft_memset.c mem_utils.c
 
 #C strings
 CSTRINGSDIR	=	$(SRCDIR)/strings/cstrings/
-CSTRINGS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c			\
- 				ft_split.c ft_strchr.c ft_strichr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c			\
-				ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c		\
-				ft_substr.c ft_tolower.c ft_toupper.c ft_strndup.c ft_strnrev.c ft_strrev.c ft_atol.c			\
+CSTRINGS	=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c		\
+ 				ft_split.c ft_strchr.c ft_strichr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c		\
+				ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c	\
+				ft_substr.c ft_tolower.c ft_toupper.c ft_strndup.c ft_strnrev.c ft_strrev.c ft_atol.c		\
 				ft_nbrlen.c ft_isspace.c ft_atoi_base.c ft_strtoupper.c ft_strtolower.c
 
 SRCS		=	$(addprefix $(LINKLISTDIR), $(LINKLIST))	\
