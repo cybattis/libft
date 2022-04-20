@@ -19,7 +19,7 @@ NAMED 		=	libft_d.a
 SHELL 		=	/bin/bash
 CC 			=	gcc
 
-CFLAGS		=	-Wall -Wextra -O2 $(INCLUDE)
+CFLAGS		=	-Wall -Wextra -O2 -MD $(INCLUDE)
 DBFLAGS		=	$(CFLAGS) -g3 -fsanitize=address
 
 INCLUDE		=	-I includes
@@ -91,18 +91,20 @@ OBJS		=	$(addprefix $(OBJSDIR)/, $(notdir $(SRCS:.c=.o)))
 OBJSDIRD	=	objd
 OBJSD		=	$(addprefix $(OBJSDIRD)/, $(notdir $(SRCS:.c=.o)))
 
+DEPENDS		=	$(OBJS:.o=.d)
+
 # Recipe
 # ****************************************************************************
 
-$(OBJSDIR)/%.o:	src/*/%.c $(DEPS) | $(OBJSDIR)
+$(OBJSDIR)/%.o:	src/*/%.c | $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIR)/%.o:	src/*/*/%.c $(DEPS) | $(OBJSDIR)
+$(OBJSDIR)/%.o:	src/*/*/%.c | $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIR)/%.o:	src/*/*/*/%.c $(DEPS) | $(OBJSDIR)
+$(OBJSDIR)/%.o:	src/*/*/*/%.c | $(OBJSDIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
@@ -112,15 +114,15 @@ $(NAME):	$(OBJS)
 	@printf "$(_GREEN)Finish compiling $(NAME)!$(_END)\n"
 
 # Debug
-$(OBJSDIRD)/%.o:	src/*/%.c $(DEPS) | $(OBJSDIRD)
+$(OBJSDIRD)/%.o:	src/*/%.c | $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIRD)/%.o:	src/*/*/%.c $(DEPS) | $(OBJSDIRD)
+$(OBJSDIRD)/%.o:	src/*/*/%.c | $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
-$(OBJSDIRD)/%.o:	src/*/*/*/%.c $(DEPS) | $(OBJSDIRD)
+$(OBJSDIRD)/%.o:	src/*/*/*/%.c | $(OBJSDIRD)
 	@$(CC) $(DBFLAGS) -c $< -o $@
 	@printf "$(_GREEN)█$(_END)"
 
@@ -157,6 +159,8 @@ $(OBJSDIRD):
 	@mkdir -p $(OBJSDIRD)
 
 .PHONY: all clean fclean re debug libft test
+
+-include $(DEPENDS)
 
 # Misc
 # =====================
